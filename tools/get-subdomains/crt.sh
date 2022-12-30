@@ -14,6 +14,9 @@ fi
 
 json=$(curl -s https://crt.sh/\?q\=$1\&output\=json)
 
-echo $json | jq -r '.[].common_name' | sort -u #| unfurl -u apexes | sort -u
-echo $json | jq -r '.[].name_value' | sort -u
+echo $json | jq -r '.[].common_name' | sort -u > tmp.txt
+echo $json | jq -r '.[].name_value' | sort -u >> tmp.txt
 
+cat tmp.txt | sort -u | anew
+
+rm -rf tmp.txt
