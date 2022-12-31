@@ -9,7 +9,7 @@ then
 	echo ""
 	echo "$ bash js-finder.sh file.txt"
 	echo ""
-	echo "pre-requirements: figlet, waybackurls, anew, gauplus, httpx"
+	echo "requirements: figlet, waybackurls, anew, gauplus, httpx"
 	exit
 fi
 
