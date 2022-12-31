@@ -6,27 +6,6 @@ then
 	exit
 fi
 
-#Basic Amass
-amass enum -df $1 | anew subdomains.txt
-
-number=`wc -l subdomains`
-
-echo -e "\e[1;92m[+]\e[0m \e[1;93mAmass Basic Scan\e[0m   : DONE!!! \e[1;36m$number Subdomains Discovered\e[0m"
-
-#Passive Amass
-amass enum -passive -df $1 | anew subdomains.txt
-
-number=`wc -l subdomains`
-
-echo -e "\e[1;92m[+]\e[0m \e[1;93mAmass Passive Scan\e[0m : DONE!!! \e[1;36m$number Subdomains Discovered\e[0m"
-
-#Active Amass
-amass enum -active -df $1 | anew subdomains.txt
-
-number=`wc -l subdomains`
-
-echo -e "\e[1;92m[+]\e[0m \e[1;93mAmass Active Scan\e[0m  : DONE!!! \e[1;36m$number Subdomains Discovered\e[0m"
-
 #Subfinder
 subfinder -dL $1 -silent -all | anew subdomains.txt
 

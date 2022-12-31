@@ -8,7 +8,7 @@ RESET='\e[0m'
 
 if [ "$1" == "" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]
 then
-        echo -e "$OKRED [-] Usage: cert.sh website or website.com$RESET"
+        echo -e "$OKRED [-] Usage: crt.sh website or website.com$RESET"
         exit
 fi
 
