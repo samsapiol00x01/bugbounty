@@ -1,27 +1,44 @@
 #!/bin/bash
 
-if [ "$1" == "" ] || [ "$1" == "-h" ]
+echo ""
+figlet -f small "get subdomains"
+echo ""
+
+if [[ "$1" == "" ]] || [[ "$1" == "-h" ]]
 then
-	echo -e "\e[1;92m[+]\e[0m \e[1;93mUSAGE\e[0m : $0 domain_file_name"
+	echo ""
+	echo "$ bash get-subdomains.sh file.txt"
+	echo ""
+	echo "pre-requirements: figlet, anew, subfinder, assetfinder, findomain, httpx"
 	exit
 fi
 
-#Subfinder
-subfinder -dL $1 -silent -all | anew subdomains.txt
+file=$1
 
-number=`wc -l subdomains`
+echo ""
+echo "[+] subfinder scan running..."
+echo ""
 
-echo -e "\e[1;92m[+]\e[0m \e[1;93mSubfinder Scan\e[0m     : DONE!!! \e[1;36m$number Subdomains Discovered\e[0m"
+subfinder -dL $file -silent | anew subdomains.txt
 
-#Assetfinder
-cat $1 | assetfinder -subs-only | anew subdomains.txt
+echo ""
+echo "[+] assetfinder scan running..."
+echo ""
 
-number=`wc -l subdomains`
+cat $file | assetfinder --subs-only | anew subdomains.txt
 
-echo -e "\e[1;92m[+]\e[0m \e[1;93mAssetfinder Scan\e[0m   : DONE!!! \e[1;36m$number Subdomains Discovered\e[0m"
+echo ""
+echo "[+] findomain scan running..."
+echo ""
 
-#Httpx
-httpx -l subdomains.txt -sc -title -td -ip -location -silent -p 80,443,8443,9001,9002,9003,7001,7002,445,81,20-25 | anew livedomains.txt
+findomain -f $file -q | anew subdomains.txt
 
-echo -e "\e[1;92m[+]\e[0m \e[1;93mHttpx Scan\e[0m         : DONE!!! \e[1;92mLive Subdomain Scan Complete\e[0m"
+echo ""
+echo "[+] httpx scan running..."
+echo ""
 
+cat subdomains.txt | httpx -sc -timeout 30 -silent -o domains.txt
+
+echo ""
+echo "[+] scan completed!"
+echo ""
