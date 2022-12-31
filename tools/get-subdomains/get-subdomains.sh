@@ -4,12 +4,12 @@ echo ""
 figlet -f small "get subdomains"
 echo ""
 
-if [[ "$1" == "" ]] || [[ "$1" == "-h" ]]
+if [[ "$1" == "" ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]
 then
 	echo ""
 	echo "$ bash get-subdomains.sh file.txt"
 	echo ""
-	echo "pre-requirements: figlet, anew, subfinder, assetfinder, findomain, httpx"
+	echo "requirements: figlet, anew, subfinder, assetfinder, findomain, httpx"
 	exit
 fi
 
