@@ -19,7 +19,7 @@ cat $file | waybackurls | grep ".js" | anew -q all_urls.txt
 
 cat $file | gauplus | grep ".js" | anew -q all_urls.txt
 
-cat all_urls.txt | httpx -timeout=30 -silent -content-type | grep -E "application/javascript" | cut -d " " f1
+cat all_urls.txt | httpx -timeout=30 -silent -content-type | grep -E "application/javascript" | cut -d " " -f1
 
 rm -rf all_urls.txt
 rm -rf resume.cfg
