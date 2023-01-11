@@ -5,13 +5,10 @@ then
 	echo ""
 	echo "$ bash js-finder.sh {file containing target urls}"
 	echo ""
-	echo "requirements: waybackurls, anew, gauplus, httpx"
+	echo "requirements: "
 	exit
 fi
 
 file=$1
 
-cat $file | while read line || [[ -n $line ]];
-do
-	{ echo $line | waybackurls; echo $line | gauplus; } | sort -u | httpx -silent -timeout=30 -content-type | grep "application/javascript" | cut -d " " -f1
-done
+cat $file | gauplus | getJS --complete
