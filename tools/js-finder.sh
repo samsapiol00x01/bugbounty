@@ -12,6 +12,7 @@ then
 	echo "requirements: figlet, waybackurls, gau, anew, nuclei"
 	echo ""
 	echo "output: js.txt | nuclei_js.txt"
+	exit
 fi
 
 
@@ -24,7 +25,7 @@ echo ""
 echo "[+] searching for js files..."
 echo "" 
 
-cat $file | { waybackurls; gau; } | httpx -silent -timeout=30 -content-type | grep -E "text/javascript|application/javascript" | cut -d " " -f1 | anew js.txt
+{ cat $file | waybackurls; cat $file | gau; } | httpx -silent -timeout=30 -content-type | grep -E "text/javascript|application/javascript" | cut -d " " -f1 | anew js.txt
 
 echo ""
 echo "[+] js file all fetched | output : js.txt"
