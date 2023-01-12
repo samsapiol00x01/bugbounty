@@ -18,6 +18,9 @@ fi
 
 file=$1
 
+rm -rf subdomains.txt
+rm -rf live_domains.txt
+
 echo ""
 echo "[+] subfinder scan running..."
 echo ""
