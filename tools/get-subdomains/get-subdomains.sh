@@ -10,6 +10,9 @@ then
 	echo "$ bash get-subdomains.sh file.txt"
 	echo ""
 	echo "requirements: figlet, anew, subfinder, assetfinder, findomain, httpx"
+	echo ""
+	echo "output: subdomains.txt | live_domains.txt"
+	echo ""
 	exit
 fi
 
@@ -37,7 +40,7 @@ echo ""
 echo "[+] httpx scan running..."
 echo ""
 
-cat subdomains.txt | httpx -sc -timeout 30 -silent -o domains.txt
+cat subdomains.txt | httpx -sc -timeout 30 -silent -o live_domains.txt
 
 echo ""
 echo "[+] scan completed!"
