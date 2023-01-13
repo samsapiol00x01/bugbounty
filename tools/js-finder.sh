@@ -9,7 +9,7 @@ then
 	echo ""
 	echo "$ bash js-finder.sh {file containing urls}"
 	echo ""
-	echo "requirements: figlet, waybackurls, gau, anew, nuclei"
+	echo "requirements: figlet, waybackurls, gau, anew, httpx, nuclei"
 	echo ""
 	echo "output: js.txt | nuclei_js.txt"
 	exit
