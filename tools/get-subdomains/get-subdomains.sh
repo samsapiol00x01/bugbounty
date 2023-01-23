@@ -25,19 +25,19 @@ echo ""
 echo "[+] subfinder scan running..."
 echo ""
 
-subfinder -dL $file -silent | anew subdomains.txt
+subfinder -dL $file -silent | sed '/*/d' | anew subdomains.txt
 
 echo ""
 echo "[+] assetfinder scan running..."
 echo ""
 
-cat $file | assetfinder --subs-only | anew subdomains.txt
+cat $file | assetfinder --subs-only | sed '/*/d' | anew subdomains.txt
 
 echo ""
 echo "[+] findomain scan running..."
 echo ""
 
-findomain -f $file -q | anew subdomains.txt
+findomain -f $file -q | sed '/*/d' | anew subdomains.txt
 
 echo ""
 echo "[+] httpx scan running..."
