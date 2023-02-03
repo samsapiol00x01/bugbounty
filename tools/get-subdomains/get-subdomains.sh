@@ -43,7 +43,7 @@ echo ""
 echo "[+] httpx scan running..."
 echo ""
 
-cat subdomains.txt | httpx -sc -timeout 30 -silent -o live_domains.txt
+cat subdomains.txt | httpx -sc -timeout 30 --title -td -location -silent -o live_domains.txt
 
 echo ""
 echo "[+] scan completed!"
